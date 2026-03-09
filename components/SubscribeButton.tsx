@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 interface Subscription {
   id: string;
@@ -8,31 +8,26 @@ interface Subscription {
   motionId: string | null;
 }
 
-export function SubscribeButton({ motionId }: { motionId: string }) {
-  const [subscription, setSubscription] = useState<Subscription | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch("/api/subscriptions")
-      .then((r) => r.json())
-      .then((subs: Subscription[]) => {
-        const existing = subs.find(
-          (s) => s.type === "motion" && s.motionId === motionId
-        );
-        setSubscription(existing ?? null);
-      })
-      .finally(() => setLoading(false));
-  }, [motionId]);
+export function SubscribeButton({
+  motionId,
+  subscription: initialSub,
+  onToggle,
+}: {
+  motionId: string;
+  subscription: Subscription | null;
+  onToggle: (sub: Subscription | null) => void;
+}) {
+  const [subscription, setSubscription] = useState<Subscription | null>(initialSub);
+  const [loading, setLoading] = useState(false);
 
   async function toggle(e: React.MouseEvent) {
     e.stopPropagation();
     setLoading(true);
     try {
       if (subscription) {
-        await fetch(`/api/subscriptions/${subscription.id}`, {
-          method: "DELETE",
-        });
+        await fetch(`/api/subscriptions/${subscription.id}`, { method: "DELETE" });
         setSubscription(null);
+        onToggle(null);
       } else {
         const res = await fetch("/api/subscriptions", {
           method: "POST",
@@ -41,6 +36,7 @@ export function SubscribeButton({ motionId }: { motionId: string }) {
         });
         const sub = await res.json();
         setSubscription(sub);
+        onToggle(sub);
       }
     } finally {
       setLoading(false);

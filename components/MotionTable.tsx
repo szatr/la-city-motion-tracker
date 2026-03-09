@@ -36,6 +36,12 @@ interface MotionsResponse {
   pages: number;
 }
 
+interface Subscription {
+  id: string;
+  type: string;
+  motionId: string | null;
+}
+
 const TIER_LABELS: Record<string, string> = {
   priority: "Priority",
   tier2: "Tier 2",
@@ -74,6 +80,15 @@ export function MotionTable({ readOnly = false }: { readOnly?: boolean }) {
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [showAddModal, setShowAddModal] = useState(false);
   const [editingMotion, setEditingMotion] = useState<Motion | null>(null);
+  const [subscriptions, setSubscriptions] = useState<Subscription[]>([]);
+
+  useEffect(() => {
+    if (readOnly) return;
+    fetch("/api/subscriptions")
+      .then((r) => r.json())
+      .then(setSubscriptions)
+      .catch(() => {});
+  }, [readOnly]);
 
   const fetchMotions = useCallback(async () => {
     setLoading(true);
@@ -117,7 +132,16 @@ export function MotionTable({ readOnly = false }: { readOnly?: boolean }) {
             >
               + Add Motion
             </button>
-            <SubscribeAllButton />
+            <SubscribeAllButton
+            subscription={subscriptions.find((s) => s.type === "all") ?? null}
+            onToggle={(sub) =>
+              setSubscriptions((prev) =>
+                sub
+                  ? [...prev.filter((s) => s.type !== "all"), sub]
+                  : prev.filter((s) => s.type !== "all")
+              )
+            }
+          />
             <ScrapeAllButton onDone={fetchMotions} />
           </div>
         )}
@@ -233,7 +257,21 @@ export function MotionTable({ readOnly = false }: { readOnly?: boolean }) {
                           >
                             Edit
                           </button>
-                          <SubscribeButton motionId={motion.id} />
+                          <SubscribeButton
+                            motionId={motion.id}
+                            subscription={
+                              subscriptions.find(
+                                (s) => s.type === "motion" && s.motionId === motion.id
+                              ) ?? null
+                            }
+                            onToggle={(sub) =>
+                              setSubscriptions((prev) =>
+                                sub
+                                  ? [...prev.filter((s) => s.motionId !== motion.id || s.type !== "motion"), sub]
+                                  : prev.filter((s) => !(s.type === "motion" && s.motionId === motion.id))
+                              )
+                            }
+                          />
                           {motion.councilFile && (
                             <ScrapeButton
                               motionId={motion.id}
