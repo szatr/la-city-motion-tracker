@@ -71,6 +71,7 @@ export function MotionTable() {
   const [loading, setLoading] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [showAddModal, setShowAddModal] = useState(false);
+  const [editingMotion, setEditingMotion] = useState<Motion | null>(null);
 
   const fetchMotions = useCallback(async () => {
     setLoading(true);
@@ -217,19 +218,29 @@ export function MotionTable() {
                       {fmt(motion.lastScrapedAt)}
                     </td>
                     <td className="px-4 py-3">
-                      {motion.councilFile && (
-                        <ScrapeButton
-                          motionId={motion.id}
-                          onDone={fetchMotions}
-                        />
-                      )}
+                      <div className="flex items-center gap-1">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setEditingMotion(motion);
+                          }}
+                          className="px-2 py-1 text-xs rounded font-medium bg-gray-100 text-gray-600 hover:bg-gray-200"
+                        >
+                          Edit
+                        </button>
+                        {motion.councilFile && (
+                          <ScrapeButton
+                            motionId={motion.id}
+                            onDone={fetchMotions}
+                          />
+                        )}
+                      </div>
                     </td>
                   </tr>
                   {expandedId === motion.id && (
                     <tr key={`${motion.id}-expand`} className="bg-gray-50 border-t border-gray-200">
                       <td colSpan={7} className="px-6 py-4">
                         <div className="space-y-3">
-                          {/* Metadata */}
                           <div className="flex flex-wrap gap-x-6 gap-y-1 text-xs text-gray-600">
                             {motion.scrapedMover && (
                               <span>
@@ -245,9 +256,7 @@ export function MotionTable() {
                             )}
                             {motion.scrapedLastChanged && (
                               <span>
-                                <span className="font-semibold">
-                                  Last Changed:
-                                </span>{" "}
+                                <span className="font-semibold">Last Changed:</span>{" "}
                                 {fmt(motion.scrapedLastChanged)}
                               </span>
                             )}
@@ -263,7 +272,6 @@ export function MotionTable() {
                             )}
                           </div>
 
-                          {/* Activity timeline */}
                           {motion.activities.length > 0 ? (
                             <div>
                               <h4 className="text-xs font-semibold text-gray-700 mb-2">
@@ -275,9 +283,7 @@ export function MotionTable() {
                                     <span className="text-gray-400 w-24 shrink-0">
                                       {fmt(a.date)}
                                     </span>
-                                    <span className="text-gray-700">
-                                      {a.activity}
-                                    </span>
+                                    <span className="text-gray-700">{a.activity}</span>
                                   </li>
                                 ))}
                               </ol>
@@ -323,7 +329,15 @@ export function MotionTable() {
       {showAddModal && (
         <AddMotionModal
           onClose={() => setShowAddModal(false)}
-          onAdded={fetchMotions}
+          onSaved={fetchMotions}
+        />
+      )}
+
+      {editingMotion && (
+        <AddMotionModal
+          initial={editingMotion}
+          onClose={() => setEditingMotion(null)}
+          onSaved={fetchMotions}
         />
       )}
     </div>

@@ -2,9 +2,20 @@
 
 import { useState } from "react";
 
+interface MotionFormValues {
+  id?: string;
+  program?: string;
+  councilFile?: string | null;
+  tier?: string;
+  status?: string | null;
+  reportBackDue?: string | null;
+  originalMotionUrl?: string | null;
+}
+
 interface AddMotionModalProps {
+  initial?: MotionFormValues;
   onClose: () => void;
-  onAdded: () => void;
+  onSaved: () => void;
 }
 
 const TIER_OPTIONS = [
@@ -13,13 +24,22 @@ const TIER_OPTIONS = [
   { value: "passed", label: "Passed" },
 ];
 
-export function AddMotionModal({ onClose, onAdded }: AddMotionModalProps) {
-  const [program, setProgram] = useState("");
-  const [councilFile, setCouncilFile] = useState("");
-  const [tier, setTier] = useState("priority");
-  const [status, setStatus] = useState("");
-  const [reportBackDue, setReportBackDue] = useState("");
-  const [originalMotionUrl, setOriginalMotionUrl] = useState("");
+function toDateInput(val: string | null | undefined): string {
+  if (!val) return "";
+  const d = new Date(val);
+  if (isNaN(d.getTime())) return "";
+  return d.toISOString().slice(0, 10);
+}
+
+export function AddMotionModal({ initial, onClose, onSaved }: AddMotionModalProps) {
+  const isEdit = !!initial?.id;
+
+  const [program, setProgram] = useState(initial?.program ?? "");
+  const [councilFile, setCouncilFile] = useState(initial?.councilFile ?? "");
+  const [tier, setTier] = useState(initial?.tier ?? "priority");
+  const [status, setStatus] = useState(initial?.status ?? "");
+  const [reportBackDue, setReportBackDue] = useState(toDateInput(initial?.reportBackDue));
+  const [originalMotionUrl, setOriginalMotionUrl] = useState(initial?.originalMotionUrl ?? "");
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
 
@@ -28,18 +48,23 @@ export function AddMotionModal({ onClose, onAdded }: AddMotionModalProps) {
     setError(null);
     setSubmitting(true);
 
-    const res = await fetch("/api/motions", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        program,
-        councilFile,
-        tier,
-        status,
-        reportBackDue: reportBackDue || null,
-        originalMotionUrl,
-      }),
-    });
+    const payload = {
+      program,
+      councilFile,
+      tier,
+      status,
+      reportBackDue: reportBackDue || null,
+      originalMotionUrl,
+    };
+
+    const res = await fetch(
+      isEdit ? `/api/motions/${initial!.id}` : "/api/motions",
+      {
+        method: isEdit ? "PATCH" : "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      }
+    );
 
     const data = await res.json();
     setSubmitting(false);
@@ -49,7 +74,7 @@ export function AddMotionModal({ onClose, onAdded }: AddMotionModalProps) {
       return;
     }
 
-    onAdded();
+    onSaved();
     onClose();
   }
 
@@ -57,7 +82,9 @@ export function AddMotionModal({ onClose, onAdded }: AddMotionModalProps) {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
       <div className="bg-white rounded-xl shadow-xl w-full max-w-md mx-4 p-6">
         <div className="flex items-center justify-between mb-5">
-          <h2 className="text-lg font-semibold">Add Motion</h2>
+          <h2 className="text-lg font-semibold">
+            {isEdit ? "Edit Motion" : "Add Motion"}
+          </h2>
           <button
             onClick={onClose}
             className="text-gray-400 hover:text-gray-600 text-xl leading-none"
@@ -87,7 +114,7 @@ export function AddMotionModal({ onClose, onAdded }: AddMotionModalProps) {
             </label>
             <input
               type="text"
-              value={councilFile}
+              value={councilFile ?? ""}
               onChange={(e) => setCouncilFile(e.target.value)}
               placeholder="e.g. 24-0001"
               className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -120,7 +147,7 @@ export function AddMotionModal({ onClose, onAdded }: AddMotionModalProps) {
             </label>
             <input
               type="text"
-              value={status}
+              value={status ?? ""}
               onChange={(e) => setStatus(e.target.value)}
               placeholder="e.g. In Committee"
               className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -145,7 +172,7 @@ export function AddMotionModal({ onClose, onAdded }: AddMotionModalProps) {
             </label>
             <input
               type="url"
-              value={originalMotionUrl}
+              value={originalMotionUrl ?? ""}
               onChange={(e) => setOriginalMotionUrl(e.target.value)}
               placeholder="https://..."
               className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -171,7 +198,7 @@ export function AddMotionModal({ onClose, onAdded }: AddMotionModalProps) {
               disabled={submitting}
               className="flex-1 px-4 py-2 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50"
             >
-              {submitting ? "Adding…" : "Add Motion"}
+              {submitting ? "Saving…" : isEdit ? "Save Changes" : "Add Motion"}
             </button>
           </div>
         </form>
