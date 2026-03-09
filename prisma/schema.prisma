@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Motion {
+  id                String    @id @default(cuid())
+  tier              String    // "priority" | "tier2" | "passed"
+  program           String
+  dateReceived      DateTime?
+  councilFile       String?   @unique
+  expiration        DateTime?
+  status            String?
+  reportBackDue     DateTime?
+  statusDate        DateTime?
+  originalMotionUrl String?
+  motionMaker       String?
+
+  // Scraped fields
+  scrapedTitle       String?
+  scrapedLastChanged DateTime?
+  scrapedMover       String?
+  scrapedSecond      String?
+  lastScrapedAt      DateTime?
+
+  activities Activity[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Activity {
+  id       String   @id @default(cuid())
+  motionId String
+  motion   Motion   @relation(fields: [motionId], references: [id], onDelete: Cascade)
+  date     DateTime
+  activity String
+
+  createdAt DateTime @default(now())
+}
