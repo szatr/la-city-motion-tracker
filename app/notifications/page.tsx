@@ -1,4 +1,4 @@
-import { getStackServerApp } from "@/stack";
+import { auth } from "@/lib/auth/server";
 import { prisma } from "@/lib/db";
 import { redirect } from "next/navigation";
 import { MarkAllReadButton } from "@/components/MarkAllReadButton";
@@ -6,7 +6,8 @@ import { MarkAllReadButton } from "@/components/MarkAllReadButton";
 export const dynamic = "force-dynamic";
 
 export default async function NotificationsPage() {
-  const user = await getStackServerApp()?.getUser() ?? null;
+  const { data: session } = await auth.getSession();
+  const user = session?.user ?? null;
   if (!user) redirect("/handler/sign-in");
 
   const notifications = await prisma.notification.findMany({

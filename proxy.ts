@@ -1,30 +1,11 @@
-import { getStackServerApp } from "@/stack";
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { auth } from "@/lib/auth/server";
 
-export async function proxy(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-
-  // Allow handler routes (sign-in/sign-up) and cron API
-  if (
-    pathname.startsWith("/handler") ||
-    pathname.startsWith("/api/cron")
-  ) {
-    return NextResponse.next();
-  }
-
-  const user = await getStackServerApp()?.getUser() ?? null;
-  if (!user) {
-    const signInUrl = new URL("/handler/sign-in", request.url);
-    signInUrl.searchParams.set("after_auth_return_to", pathname);
-    return NextResponse.redirect(signInUrl);
-  }
-
-  return NextResponse.next();
-}
+export default auth.middleware({
+  loginUrl: "/auth/sign-in",
+});
 
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|favicon.ico).*)",
+    "/((?!auth/|api/auth/|api/cron/|_next/static|_next/image|favicon.ico).*)",
   ],
 };

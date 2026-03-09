@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { StackProvider, StackTheme } from "@stackframe/stack";
-import { getStackServerApp } from "@/stack";
+import { NeonAuthUIProvider } from "@neondatabase/auth/react";
+import { auth } from "@/lib/auth/server";
+import { authClient } from "@/lib/auth/client";
 import { UserMenu } from "@/components/UserMenu";
 import { prisma } from "@/lib/db";
 import "./globals.css";
@@ -26,34 +27,24 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const app = getStackServerApp();
-  const inner = (
-    <>
-      <AppHeader />
-      <main className="max-w-7xl mx-auto px-4 py-6">{children}</main>
-    </>
-  );
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 text-gray-900`}
       >
-        {app ? (
-          <StackProvider app={app}>
-            <StackTheme>{inner}</StackTheme>
-          </StackProvider>
-        ) : (
-          inner
-        )}
+        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+        <NeonAuthUIProvider authClient={authClient as any} redirectTo="/">
+          <AppHeader />
+          <main className="max-w-7xl mx-auto px-4 py-6">{children}</main>
+        </NeonAuthUIProvider>
       </body>
     </html>
   );
 }
 
 async function AppHeader() {
-  const app = getStackServerApp();
-  const user = app ? await app.getUser() : null;
+  const { data: session } = await auth.getSession();
+  const user = session?.user ?? null;
 
   let unreadCount = 0;
   if (user) {
@@ -100,7 +91,7 @@ async function AppHeader() {
                 </span>
               )}
             </a>
-            <UserMenu displayName={user.displayName} />
+            <UserMenu displayName={user.name ?? null} />
           </div>
         )}
       </div>
