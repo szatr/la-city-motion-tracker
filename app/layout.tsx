@@ -64,6 +64,14 @@ async function AppHeader() {
             LA City Council motions — via City Clerk Connect
           </p>
         </div>
+        {!user && (
+          <a
+            href="/auth/sign-in"
+            className="text-xs px-3 py-1.5 rounded bg-blue-800 hover:bg-blue-700 text-white transition-colors"
+          >
+            Sign in
+          </a>
+        )}
         {user && (
           <div className="flex items-center gap-4">
             <a
