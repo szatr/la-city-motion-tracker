@@ -1,4 +1,4 @@
-import { stackServerApp } from "@/stack";
+import { getStackServerApp } from "@/stack";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
@@ -13,7 +13,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const user = await stackServerApp.getUser();
+  const user = await getStackServerApp().getUser();
   if (!user) {
     const signInUrl = new URL("/handler/sign-in", request.url);
     signInUrl.searchParams.set("after_auth_return_to", pathname);

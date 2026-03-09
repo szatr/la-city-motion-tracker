@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { StackProvider, StackTheme } from "@stackframe/stack";
-import { stackServerApp } from "@/stack";
+import { getStackServerApp } from "@/stack";
 import { UserMenu } from "@/components/UserMenu";
 import { prisma } from "@/lib/db";
 import "./globals.css";
@@ -31,7 +31,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 text-gray-900`}
       >
-        <StackProvider app={stackServerApp}>
+        <StackProvider app={getStackServerApp()}>
           <StackTheme>
             <AppHeader />
             <main className="max-w-7xl mx-auto px-4 py-6">{children}</main>
@@ -43,7 +43,7 @@ export default function RootLayout({
 }
 
 async function AppHeader() {
-  const user = await stackServerApp.getUser();
+  const user = await getStackServerApp().getUser();
 
   let unreadCount = 0;
   if (user) {

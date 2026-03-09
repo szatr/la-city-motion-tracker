@@ -1,4 +1,4 @@
-import { stackServerApp } from "@/stack";
+import { getStackServerApp } from "@/stack";
 import { prisma } from "@/lib/db";
 import { redirect } from "next/navigation";
 import { MarkAllReadButton } from "@/components/MarkAllReadButton";
@@ -6,7 +6,7 @@ import { MarkAllReadButton } from "@/components/MarkAllReadButton";
 export const dynamic = "force-dynamic";
 
 export default async function NotificationsPage() {
-  const user = await stackServerApp.getUser();
+  const user = await getStackServerApp().getUser();
   if (!user) redirect("/handler/sign-in");
 
   const notifications = await prisma.notification.findMany({

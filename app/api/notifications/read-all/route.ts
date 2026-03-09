@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
-import { stackServerApp } from "@/stack";
+import { getStackServerApp } from "@/stack";
 import { prisma } from "@/lib/db";
 
 export async function POST() {
-  const user = await stackServerApp.getUser();
+  const user = await getStackServerApp().getUser();
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   await prisma.notification.updateMany({

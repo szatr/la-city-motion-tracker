@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
-import { stackServerApp } from "@/stack";
+import { getStackServerApp } from "@/stack";
 import { prisma } from "@/lib/db";
 
 const PAGE_SIZE = 25;
 
 export async function GET(request: Request) {
-  const user = await stackServerApp.getUser();
+  const user = await getStackServerApp().getUser();
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const { searchParams } = new URL(request.url);
