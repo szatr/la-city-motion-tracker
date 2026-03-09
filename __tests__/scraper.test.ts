@@ -12,6 +12,12 @@ vi.mock("@/lib/db", () => ({
       deleteMany: vi.fn(),
       create: vi.fn(),
     },
+    subscription: {
+      findMany: vi.fn().mockResolvedValue([]),
+    },
+    notification: {
+      createMany: vi.fn(),
+    },
     $transaction: vi.fn(),
   },
 }));
@@ -199,6 +205,7 @@ describe("scrapeMotion", () => {
       scrapedLastChanged: null,
       scrapedMover: null,
       scrapedSecond: null,
+      activities: [],
     } as never);
 
     mockFetch(FULL_HTML);

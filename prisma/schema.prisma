@@ -26,7 +26,9 @@ model Motion {
   scrapedSecond      String?
   lastScrapedAt      DateTime?
 
-  activities Activity[]
+  activities    Activity[]
+  subscriptions Subscription[]
+  notifications Notification[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -40,4 +42,29 @@ model Activity {
   activity String
 
   createdAt DateTime @default(now())
+}
+
+model Subscription {
+  id        String   @id @default(cuid())
+  userId    String
+  type      String   // "motion" | "all"
+  motionId  String?
+  motion    Motion?  @relation(fields: [motionId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  notifications Notification[]
+
+  @@unique([userId, type, motionId])
+}
+
+model Notification {
+  id             String       @id @default(cuid())
+  userId         String
+  motionId       String
+  motion         Motion       @relation(fields: [motionId], references: [id], onDelete: Cascade)
+  subscriptionId String?
+  subscription   Subscription? @relation(fields: [subscriptionId], references: [id], onDelete: SetNull)
+  message        String
+  readAt         DateTime?
+  createdAt      DateTime     @default(now())
 }

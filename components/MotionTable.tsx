@@ -4,6 +4,8 @@ import { useState, useEffect, useCallback } from "react";
 import { MotionFilters, Tier } from "./MotionFilters";
 import { ScrapeButton, ScrapeAllButton } from "./ScrapeButton";
 import { AddMotionModal } from "./AddMotionModal";
+import { SubscribeButton } from "./SubscribeButton";
+import { SubscribeAllButton } from "./SubscribeAllButton";
 
 interface Activity {
   id: string;
@@ -114,6 +116,7 @@ export function MotionTable() {
           >
             + Add Motion
           </button>
+          <SubscribeAllButton />
           <ScrapeAllButton onDone={fetchMotions} />
         </div>
       </div>
@@ -228,6 +231,7 @@ export function MotionTable() {
                         >
                           Edit
                         </button>
+                        <SubscribeButton motionId={motion.id} />
                         {motion.councilFile && (
                           <ScrapeButton
                             motionId={motion.id}

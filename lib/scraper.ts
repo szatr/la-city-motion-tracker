@@ -103,12 +103,23 @@ export async function scrapeCouncilFile(
 }
 
 export async function scrapeMotion(motionId: string): Promise<void> {
-  const motion = await prisma.motion.findUnique({ where: { id: motionId } });
+  const motion = await prisma.motion.findUnique({
+    where: { id: motionId },
+    include: { activities: true },
+  });
   if (!motion?.councilFile) {
     throw new Error(`Motion ${motionId} has no councilFile`);
   }
 
   const scraped = await scrapeCouncilFile(motion.councilFile);
+
+  // Compute new activities by comparing against existing ones
+  const existingKeys = new Set(
+    motion.activities.map((a) => `${a.date.toISOString()}|${a.activity}`)
+  );
+  const newActivities = scraped.activities.filter(
+    (a) => !existingKeys.has(`${a.date.toISOString()}|${a.activity}`)
+  );
 
   // Upsert activities: delete old ones and insert fresh
   await prisma.$transaction([
@@ -130,4 +141,29 @@ export async function scrapeMotion(motionId: string): Promise<void> {
       },
     }),
   ]);
+
+  // Create notifications for new activities
+  if (newActivities.length > 0) {
+    const subscriptions = await prisma.subscription.findMany({
+      where: {
+        OR: [
+          { type: "all" },
+          { type: "motion", motionId },
+        ],
+      },
+    });
+
+    if (subscriptions.length > 0) {
+      const notifications = subscriptions.flatMap((sub) =>
+        newActivities.map((a) => ({
+          userId: sub.userId,
+          motionId,
+          subscriptionId: sub.id,
+          message: `${motion.program}: ${a.activity} (${a.date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })})`,
+        }))
+      );
+
+      await prisma.notification.createMany({ data: notifications });
+    }
+  }
 }
