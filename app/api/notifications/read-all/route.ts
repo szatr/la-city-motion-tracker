@@ -3,7 +3,7 @@ import { getStackServerApp } from "@/stack";
 import { prisma } from "@/lib/db";
 
 export async function POST() {
-  const user = await getStackServerApp().getUser();
+  const user = await getStackServerApp()?.getUser() ?? null;
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   await prisma.notification.updateMany({

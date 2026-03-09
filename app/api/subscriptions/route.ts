@@ -3,7 +3,7 @@ import { getStackServerApp } from "@/stack";
 import { prisma } from "@/lib/db";
 
 export async function GET() {
-  const user = await getStackServerApp().getUser();
+  const user = await getStackServerApp()?.getUser() ?? null;
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const subscriptions = await prisma.subscription.findMany({
@@ -15,7 +15,7 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  const user = await getStackServerApp().getUser();
+  const user = await getStackServerApp()?.getUser() ?? null;
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const body = await request.json();

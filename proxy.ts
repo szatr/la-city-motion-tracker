@@ -2,7 +2,7 @@ import { getStackServerApp } from "@/stack";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Allow handler routes (sign-in/sign-up) and cron API
@@ -13,7 +13,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const user = await getStackServerApp().getUser();
+  const user = await getStackServerApp()?.getUser() ?? null;
   if (!user) {
     const signInUrl = new URL("/handler/sign-in", request.url);
     signInUrl.searchParams.set("after_auth_return_to", pathname);

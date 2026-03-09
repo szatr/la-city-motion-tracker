@@ -6,7 +6,7 @@ import { MarkAllReadButton } from "@/components/MarkAllReadButton";
 export const dynamic = "force-dynamic";
 
 export default async function NotificationsPage() {
-  const user = await getStackServerApp().getUser();
+  const user = await getStackServerApp()?.getUser() ?? null;
   if (!user) redirect("/handler/sign-in");
 
   const notifications = await prisma.notification.findMany({

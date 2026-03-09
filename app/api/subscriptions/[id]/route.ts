@@ -6,7 +6,7 @@ export async function DELETE(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const user = await getStackServerApp().getUser();
+  const user = await getStackServerApp()?.getUser() ?? null;
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const { id } = await params;

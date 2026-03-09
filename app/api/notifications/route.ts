@@ -5,7 +5,7 @@ import { prisma } from "@/lib/db";
 const PAGE_SIZE = 25;
 
 export async function GET(request: Request) {
-  const user = await getStackServerApp().getUser();
+  const user = await getStackServerApp()?.getUser() ?? null;
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const { searchParams } = new URL(request.url);

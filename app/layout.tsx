@@ -26,24 +26,34 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const app = getStackServerApp();
+  const inner = (
+    <>
+      <AppHeader />
+      <main className="max-w-7xl mx-auto px-4 py-6">{children}</main>
+    </>
+  );
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 text-gray-900`}
       >
-        <StackProvider app={getStackServerApp()}>
-          <StackTheme>
-            <AppHeader />
-            <main className="max-w-7xl mx-auto px-4 py-6">{children}</main>
-          </StackTheme>
-        </StackProvider>
+        {app ? (
+          <StackProvider app={app}>
+            <StackTheme>{inner}</StackTheme>
+          </StackProvider>
+        ) : (
+          inner
+        )}
       </body>
     </html>
   );
 }
 
 async function AppHeader() {
-  const user = await getStackServerApp().getUser();
+  const app = getStackServerApp();
+  const user = app ? await app.getUser() : null;
 
   let unreadCount = 0;
   if (user) {
