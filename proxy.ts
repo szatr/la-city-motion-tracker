@@ -6,6 +6,8 @@ export default auth.middleware({
 
 export const config = {
   matcher: [
-    "/((?!auth/|api/auth/|api/cron/|_next/static|_next/image|favicon.ico).*)",
+    // .+ instead of .* so the root / is not matched (public read-only view)
+    // api/motions excluded so anonymous users can load the table data
+    "/((?!auth/|api/auth/|api/cron/|api/motions|_next/static|_next/image|favicon.ico).+)",
   ],
 };
