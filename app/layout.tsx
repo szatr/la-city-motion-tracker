@@ -20,6 +20,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "LA City Motion Tracker",
   description: "Track LA City Council motions from the City Clerk Connect",
+  icons: { icon: "/favicon.svg" },
 };
 
 export default function RootLayout({
@@ -56,13 +57,20 @@ async function AppHeader() {
   return (
     <header className="bg-blue-900 text-white px-6 py-4 shadow">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <a href="/" className="hover:opacity-80 transition-opacity">
-          <h1 className="text-xl font-bold tracking-tight">
-            LA City Motion Tracker
-          </h1>
-          <p className="text-blue-200 text-sm mt-0.5">
-            LA City Council motions — via City Clerk Connect
-          </p>
+        <a href="/" className="flex items-center gap-4 hover:opacity-80 transition-opacity">
+          <img
+            src="/ahla-tracker-logo.svg"
+            alt="AHLA logo"
+            className="h-20 w-auto rounded border border-blue-700 bg-[#FFFDF5] p-1.5"
+          />
+          <div>
+            <h1 className="text-xl font-bold tracking-tight">
+              LA City Motion Tracker
+            </h1>
+            <p className="text-blue-200 text-sm mt-0.5">
+              LA City Council motions — via City Clerk Connect
+            </p>
+          </div>
         </a>
         {!user && (
           <a

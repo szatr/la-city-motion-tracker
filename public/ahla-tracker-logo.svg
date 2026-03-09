@@ -1,0 +1,996 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 520 160"
+   width="520"
+   height="160"
+   version="1.1"
+   id="svg94"
+   sodipodi:docname="ahla-tracker-logo.svg"
+   inkscape:version="1.4.2 (ebf0e940, 2025-05-08)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview94"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="1.6"
+     inkscape:cx="259.6875"
+     inkscape:cy="79.6875"
+     inkscape:window-width="1920"
+     inkscape:window-height="1052"
+     inkscape:window-x="1512"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g90" />
+  <defs
+     id="defs19">
+    <!-- Gradient for sun/dome glow -->
+    <radialGradient
+       id="sunGrad"
+       cx="50%"
+       cy="50%"
+       r="50%">
+      <stop
+         offset="0%"
+         stop-color="#FF6B35"
+         id="stop1" />
+      <stop
+         offset="50%"
+         stop-color="#F7931E"
+         id="stop2" />
+      <stop
+         offset="100%"
+         stop-color="#FFD700"
+         id="stop3" />
+    </radialGradient>
+    <radialGradient
+       id="domeGlow"
+       cx="50%"
+       cy="80%"
+       r="60%">
+      <stop
+         offset="0%"
+         stop-color="#FFD700"
+         stop-opacity="0.3"
+         id="stop4" />
+      <stop
+         offset="100%"
+         stop-color="#FFD700"
+         stop-opacity="0"
+         id="stop5" />
+    </radialGradient>
+    <!-- Capitol dome gradient -->
+    <linearGradient
+       id="domeGrad"
+       x1="0%"
+       y1="0%"
+       x2="0%"
+       y2="100%">
+      <stop
+         offset="0%"
+         stop-color="#2C3E7A"
+         id="stop6" />
+      <stop
+         offset="100%"
+         stop-color="#1A2557"
+         id="stop7" />
+    </linearGradient>
+    <!-- Building gradients using AHLA brand colors -->
+    <linearGradient
+       id="bldg1"
+       x1="0%"
+       y1="0%"
+       x2="0%"
+       y2="100%">
+      <stop
+         offset="0%"
+         stop-color="#E63946"
+         id="stop8" />
+      <stop
+         offset="100%"
+         stop-color="#C1121F"
+         id="stop9" />
+    </linearGradient>
+    <linearGradient
+       id="bldg2"
+       x1="0%"
+       y1="0%"
+       x2="0%"
+       y2="100%">
+      <stop
+         offset="0%"
+         stop-color="#F77F00"
+         id="stop10" />
+      <stop
+         offset="100%"
+         stop-color="#E06C00"
+         id="stop11" />
+    </linearGradient>
+    <linearGradient
+       id="bldg3"
+       x1="0%"
+       y1="0%"
+       x2="0%"
+       y2="100%">
+      <stop
+         offset="0%"
+         stop-color="#2DC653"
+         id="stop12" />
+      <stop
+         offset="100%"
+         stop-color="#1A9E3F"
+         id="stop13" />
+    </linearGradient>
+    <linearGradient
+       id="bldg4"
+       x1="0%"
+       y1="0%"
+       x2="0%"
+       y2="100%">
+      <stop
+         offset="0%"
+         stop-color="#3A86FF"
+         id="stop14" />
+      <stop
+         offset="100%"
+         stop-color="#1E5FCC"
+         id="stop15" />
+    </linearGradient>
+    <linearGradient
+       id="bldg5"
+       x1="0%"
+       y1="0%"
+       x2="0%"
+       y2="100%">
+      <stop
+         offset="0%"
+         stop-color="#FF006E"
+         id="stop16" />
+      <stop
+         offset="100%"
+         stop-color="#CC0057"
+         id="stop17" />
+    </linearGradient>
+    <linearGradient
+       id="scrollGrad"
+       x1="0%"
+       y1="0%"
+       x2="0%"
+       y2="100%">
+      <stop
+         offset="0%"
+         stop-color="#FFF9E6"
+         id="stop18" />
+      <stop
+         offset="100%"
+         stop-color="#F5E6C0"
+         id="stop19" />
+    </linearGradient>
+  </defs>
+  <!-- === ICON GROUP === -->
+  <g
+     transform="translate(4, 8)"
+     id="g90">
+    <!-- Background glow behind dome -->
+    <ellipse
+       cx="80"
+       cy="95"
+       rx="45"
+       ry="20"
+       fill="url(#domeGlow)"
+       id="ellipse19" />
+    <!-- Sun rays behind everything -->
+    <g
+       transform="translate(80, 52)"
+       opacity="0.9"
+       id="g24">
+      <!-- Sun rays -->
+      <line
+         x1="0"
+         y1="-22"
+         x2="0"
+         y2="-30"
+         stroke="#FFD700"
+         stroke-width="2"
+         stroke-linecap="round"
+         id="line19" />
+      <line
+         x1="15.6"
+         y1="-15.6"
+         x2="21.2"
+         y2="-21.2"
+         stroke="#FFD700"
+         stroke-width="2"
+         stroke-linecap="round"
+         id="line20" />
+      <line
+         x1="22"
+         y1="0"
+         x2="30"
+         y2="0"
+         stroke="#FFD700"
+         stroke-width="2"
+         stroke-linecap="round"
+         id="line21" />
+      <line
+         x1="15.6"
+         y1="15.6"
+         x2="21.2"
+         y2="21.2"
+         stroke="#FFD700"
+         stroke-width="2"
+         stroke-linecap="round"
+         id="line22" />
+      <line
+         x1="-15.6"
+         y1="-15.6"
+         x2="-21.2"
+         y2="-21.2"
+         stroke="#FFD700"
+         stroke-width="2"
+         stroke-linecap="round"
+         id="line23" />
+      <line
+         x1="-22"
+         y1="0"
+         x2="-30"
+         y2="0"
+         stroke="#FFD700"
+         stroke-width="2"
+         stroke-linecap="round"
+         id="line24" />
+      <!-- Sun circle -->
+      <circle
+         cx="0"
+         cy="0"
+         r="16"
+         fill="url(#sunGrad)"
+         id="circle24" />
+    </g>
+    <!-- === CAPITOL / CITY HALL DOME (center-back) === -->
+    <!-- Steps/base -->
+    <rect
+       x="62"
+       y="118"
+       width="36"
+       height="4"
+       rx="1"
+       fill="#2C3E7A"
+       id="rect24" />
+    <rect
+       x="65"
+       y="115"
+       width="30"
+       height="4"
+       rx="1"
+       fill="#2C3E7A"
+       id="rect25" />
+    <!-- Main building body -->
+    <rect
+       x="68"
+       y="95"
+       width="24"
+       height="22"
+       fill="url(#domeGrad)"
+       id="rect26" />
+    <!-- Columns -->
+    <rect
+       x="70"
+       y="96"
+       width="2.5"
+       height="21"
+       fill="#3A4FA0"
+       opacity="0.6"
+       id="rect27" />
+    <rect
+       x="74.5"
+       y="96"
+       width="2.5"
+       height="21"
+       fill="#3A4FA0"
+       opacity="0.6"
+       id="rect28" />
+    <rect
+       x="79"
+       y="96"
+       width="2.5"
+       height="21"
+       fill="#3A4FA0"
+       opacity="0.6"
+       id="rect29" />
+    <rect
+       x="83.5"
+       y="96"
+       width="2.5"
+       height="21"
+       fill="#3A4FA0"
+       opacity="0.6"
+       id="rect30" />
+    <rect
+       x="88"
+       y="96"
+       width="2.5"
+       height="21"
+       fill="#3A4FA0"
+       opacity="0.6"
+       id="rect31" />
+    <!-- Drum of dome -->
+    <rect
+       x="71"
+       y="88"
+       width="18"
+       height="8"
+       rx="1"
+       fill="#2C3E7A"
+       id="rect32" />
+    <!-- Dome curve -->
+    <path
+       d="M68 88 Q80 65 92 88 Z"
+       fill="#2C3E7A"
+       id="path32" />
+    <!-- Dome highlight -->
+    <path
+       d="M72 85 Q80 68 82 80"
+       fill="none"
+       stroke="#4A65C0"
+       stroke-width="1.5"
+       opacity="0.7"
+       id="path33" />
+    <!-- Lantern on top -->
+    <rect
+       x="77"
+       y="63"
+       width="6"
+       height="5"
+       rx="1"
+       fill="#2C3E7A"
+       id="rect33" />
+    <!-- Flagpole -->
+    <line
+       x1="80"
+       y1="40"
+       x2="80"
+       y2="63"
+       stroke="#1A2557"
+       stroke-width="1.2"
+       id="line33" />
+    <!-- Flag - small bill/scroll on flagpole -->
+    <rect
+       x="80"
+       y="41"
+       width="10"
+       height="7"
+       rx="1"
+       fill="#E63946"
+       id="rect34" />
+    <line
+       x1="82"
+       y1="43.5"
+       x2="88"
+       y2="43.5"
+       stroke="white"
+       stroke-width="0.8"
+       id="line34" />
+    <line
+       x1="82"
+       y1="45.5"
+       x2="87"
+       y2="45.5"
+       stroke="white"
+       stroke-width="0.8"
+       id="line35" />
+    <!-- === BUILDINGS (colorful, AHLA-style) === -->
+    <!-- Far left building - tall red -->
+    <rect
+       x="12"
+       y="72"
+       width="16"
+       height="55"
+       rx="1.5"
+       fill="url(#bldg1)"
+       id="rect35" />
+    <!-- Windows -->
+    <rect
+       x="15"
+       y="76"
+       width="4"
+       height="4"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect36" />
+    <rect
+       x="21"
+       y="76"
+       width="4"
+       height="4"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect37" />
+    <rect
+       x="15"
+       y="84"
+       width="4"
+       height="4"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect38" />
+    <rect
+       x="21"
+       y="84"
+       width="4"
+       height="4"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect39" />
+    <rect
+       x="15"
+       y="92"
+       width="4"
+       height="4"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect40" />
+    <rect
+       x="21"
+       y="92"
+       width="4"
+       height="4"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect41" />
+    <rect
+       x="15"
+       y="100"
+       width="4"
+       height="4"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect42" />
+    <rect
+       x="21"
+       y="100"
+       width="4"
+       height="4"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect43" />
+    <!-- Antenna -->
+    <line
+       x1="20"
+       y1="60"
+       x2="20"
+       y2="72"
+       stroke="#E63946"
+       stroke-width="1.5"
+       id="line43" />
+    <circle
+       cx="20"
+       cy="59"
+       r="2"
+       fill="#FF6B35"
+       id="circle43" />
+    <!-- Second building - orange, medium -->
+    <rect
+       x="30"
+       y="84"
+       width="14"
+       height="43"
+       rx="1.5"
+       fill="url(#bldg2)"
+       id="rect44" />
+    <rect
+       x="33"
+       y="87"
+       width="3.5"
+       height="3.5"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect45" />
+    <rect
+       x="38.5"
+       y="87"
+       width="3.5"
+       height="3.5"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect46" />
+    <rect
+       x="33"
+       y="94"
+       width="3.5"
+       height="3.5"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect47" />
+    <rect
+       x="38.5"
+       y="94"
+       width="3.5"
+       height="3.5"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect48" />
+    <rect
+       x="33"
+       y="101"
+       width="3.5"
+       height="3.5"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect49" />
+    <rect
+       x="38.5"
+       y="101"
+       width="3.5"
+       height="3.5"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect50" />
+    <!-- Stepped top -->
+    <rect
+       x="32"
+       y="80"
+       width="10"
+       height="5"
+       rx="1"
+       fill="#F77F00"
+       id="rect51" />
+    <rect
+       x="34"
+       y="76"
+       width="6"
+       height="5"
+       rx="1"
+       fill="#F77F00"
+       id="rect52" />
+    <!-- Third building - green, short/wide -->
+    <rect
+       x="46"
+       y="100"
+       width="18"
+       height="27"
+       rx="1.5"
+       fill="url(#bldg3)"
+       id="rect53" />
+    <rect
+       x="49"
+       y="103"
+       width="4"
+       height="4"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect54" />
+    <rect
+       x="55"
+       y="103"
+       width="4"
+       height="4"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect55" />
+    <rect
+       x="49"
+       y="111"
+       width="4"
+       height="4"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect56" />
+    <rect
+       x="55"
+       y="111"
+       width="4"
+       height="4"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect57" />
+    <!-- Flat rooftop with railing suggestion -->
+    <rect
+       x="46"
+       y="97"
+       width="18"
+       height="4"
+       rx="1"
+       fill="#2DC653"
+       id="rect58" />
+    <line
+       x1="49"
+       y1="97"
+       x2="49"
+       y2="100"
+       stroke="#1A9E3F"
+       stroke-width="1"
+       id="line58" />
+    <line
+       x1="55"
+       y1="97"
+       x2="55"
+       y2="100"
+       stroke="#1A9E3F"
+       stroke-width="1"
+       id="line59" />
+    <line
+       x1="61"
+       y1="97"
+       x2="61"
+       y2="100"
+       stroke="#1A9E3F"
+       stroke-width="1"
+       id="line60" />
+    <!-- Right of dome: blue building -->
+    <rect
+       x="110"
+       y="80"
+       width="16"
+       height="47"
+       rx="1.5"
+       fill="url(#bldg4)"
+       id="rect60" />
+    <rect
+       x="113"
+       y="83"
+       width="4"
+       height="4"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect61" />
+    <rect
+       x="119"
+       y="83"
+       width="4"
+       height="4"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect62" />
+    <rect
+       x="113"
+       y="91"
+       width="4"
+       height="4"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect63" />
+    <rect
+       x="119"
+       y="91"
+       width="4"
+       height="4"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect64" />
+    <rect
+       x="113"
+       y="99"
+       width="4"
+       height="4"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect65" />
+    <rect
+       x="119"
+       y="99"
+       width="4"
+       height="4"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect66" />
+    <rect
+       x="113"
+       y="107"
+       width="4"
+       height="4"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect67" />
+    <rect
+       x="119"
+       y="107"
+       width="4"
+       height="4"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect68" />
+    <!-- Pointed top -->
+    <polygon
+       points="110,80 118,68 126,80"
+       fill="url(#bldg4)"
+       id="polygon68" />
+    <!-- Far right - pink/magenta building -->
+    <rect
+       x="128"
+       y="88"
+       width="13"
+       height="39"
+       rx="1.5"
+       fill="url(#bldg5)"
+       id="rect69" />
+    <rect
+       x="131"
+       y="91"
+       width="3.5"
+       height="3.5"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect70" />
+    <rect
+       x="136.5"
+       y="91"
+       width="3.5"
+       height="3.5"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect71" />
+    <rect
+       x="131"
+       y="98"
+       width="3.5"
+       height="3.5"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect72" />
+    <rect
+       x="136.5"
+       y="98"
+       width="3.5"
+       height="3.5"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect73" />
+    <rect
+       x="131"
+       y="105"
+       width="3.5"
+       height="3.5"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect74" />
+    <rect
+       x="136.5"
+       y="105"
+       width="3.5"
+       height="3.5"
+       rx="0.5"
+       fill="white"
+       opacity="0.5"
+       id="rect75" />
+    <!-- Stepped rooftop -->
+    <rect
+       x="130"
+       y="83"
+       width="9"
+       height="6"
+       rx="1"
+       fill="#FF006E"
+       id="rect76" />
+    <rect
+       x="132"
+       y="79"
+       width="5"
+       height="5"
+       rx="1"
+       fill="#FF006E"
+       id="rect77" />
+    <!-- === LEGISLATIVE SCROLL (foreground) === -->
+    <!-- Shadow -->
+    <ellipse
+       cx="80"
+       cy="132"
+       rx="28"
+       ry="3"
+       fill="#1A2557"
+       opacity="0.12"
+       id="ellipse77" />
+    <!-- Scroll body -->
+    <rect
+       x="56"
+       y="114"
+       width="48"
+       height="18"
+       rx="2"
+       fill="url(#scrollGrad)"
+       id="rect78" />
+    <!-- Scroll rolled ends -->
+    <ellipse
+       cx="56"
+       cy="123"
+       rx="4"
+       ry="9"
+       fill="#EDD99A"
+       id="ellipse78" />
+    <ellipse
+       cx="104"
+       cy="123"
+       rx="4"
+       ry="9"
+       fill="#EDD99A"
+       id="ellipse79" />
+    <!-- Scroll shading on ends -->
+    <ellipse
+       cx="56"
+       cy="123"
+       rx="2.5"
+       ry="7.5"
+       fill="#D4B86A"
+       opacity="0.5"
+       id="ellipse80" />
+    <ellipse
+       cx="104"
+       cy="123"
+       rx="2.5"
+       ry="7.5"
+       fill="#D4B86A"
+       opacity="0.5"
+       id="ellipse81" />
+    <!-- Lines of text on scroll -->
+    <line
+       x1="62"
+       y1="119"
+       x2="98"
+       y2="119"
+       stroke="#B8975A"
+       stroke-width="1.2"
+       stroke-linecap="round"
+       id="line81" />
+    <line
+       x1="62"
+       y1="123"
+       x2="98"
+       y2="123"
+       stroke="#B8975A"
+       stroke-width="1.2"
+       stroke-linecap="round"
+       id="line82" />
+    <line
+       x1="62"
+       y1="127"
+       x2="88"
+       y2="127"
+       stroke="#B8975A"
+       stroke-width="1"
+       stroke-linecap="round"
+       id="line83" />
+    <!-- Checkmark / vote mark on scroll -->
+    <polyline
+       points="90,122 93,126 99,118"
+       fill="none"
+       stroke="#2DC653"
+       stroke-width="2.2"
+       stroke-linecap="round"
+       stroke-linejoin="round"
+       id="polyline83" />
+    <!-- Ground line -->
+    <line
+       x1="8"
+       y1="127"
+       x2="152"
+       y2="127"
+       stroke="#E8ECF5"
+       stroke-width="1.5"
+       id="line84" />
+    <!-- Small people figures at base (AHLA style) -->
+    <!-- Birds -->
+    <path
+       d="M35 35 Q37 33 39 35"
+       fill="none"
+       stroke="#2C3E7A"
+       stroke-width="1.2"
+       stroke-linecap="round"
+       id="path88" />
+    <path
+       d="M42 28 Q44 26 46 28"
+       fill="none"
+       stroke="#2C3E7A"
+       stroke-width="1.2"
+       stroke-linecap="round"
+       id="path89" />
+    <path
+       d="M110 38 Q112 36 114 38"
+       fill="none"
+       stroke="#2C3E7A"
+       stroke-width="1.2"
+       stroke-linecap="round"
+       id="path90" />
+  </g>
+  <!-- === WORDMARK === -->
+  <g
+     transform="translate(168, 18)"
+     id="g94">
+    <!-- BILL TRACKER -->
+    <text
+       x="0"
+       y="28"
+       font-family="Georgia, 'Times New Roman', serif"
+       font-size="13"
+       font-weight="700"
+       letter-spacing="3"
+       fill="#2C3E7A"
+       text-anchor="start"
+       id="text90">BILL TRACKER</text>
+    <!-- Divider line -->
+    <line
+       x1="0"
+       y1="36"
+       x2="340"
+       y2="36"
+       stroke="#E63946"
+       stroke-width="2"
+       id="line90" />
+    <!-- ABUNDANT -->
+    <text
+       x="0"
+       y="72"
+       font-family="Georgia, 'Times New Roman', serif"
+       font-size="36"
+       font-weight="700"
+       fill="#2C3E7A"
+       letter-spacing="-0.5"
+       id="text91">ABUNDANT</text>
+    <!-- HOUSING -->
+    <text
+       x="0"
+       y="110"
+       font-family="Georgia, 'Times New Roman', serif"
+       font-size="36"
+       font-weight="700"
+       fill="#2C3E7A"
+       letter-spacing="-0.5"
+       id="text92">HOUSING</text>
+    <!-- LA - large accent -->
+    <text
+       x="265"
+       y="116"
+       font-family="Georgia, 'Times New Roman', serif"
+       font-size="58"
+       font-weight="900"
+       fill="#E63946"
+       letter-spacing="-2"
+       id="text93">LA</text>
+    <!-- HOUSING FOR ALL tagline -->
+    <text
+       x="0"
+       y="130"
+       font-family="Georgia, 'Times New Roman', serif"
+       font-size="10"
+       letter-spacing="4.5"
+       fill="#6B7CB0"
+       id="text94">HOUSING  FOR  ALL</text>
+  </g>
+</svg>
