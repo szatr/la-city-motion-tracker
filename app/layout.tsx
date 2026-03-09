@@ -56,14 +56,14 @@ async function AppHeader() {
   return (
     <header className="bg-blue-900 text-white px-6 py-4 shadow">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <div>
+        <a href="/" className="hover:opacity-80 transition-opacity">
           <h1 className="text-xl font-bold tracking-tight">
             LA City Motion Tracker
           </h1>
           <p className="text-blue-200 text-sm mt-0.5">
             LA City Council motions — via City Clerk Connect
           </p>
-        </div>
+        </a>
         {!user && (
           <a
             href="/auth/sign-in"
