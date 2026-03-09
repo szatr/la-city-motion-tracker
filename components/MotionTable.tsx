@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { MotionFilters, Tier } from "./MotionFilters";
 import { ScrapeButton, ScrapeAllButton } from "./ScrapeButton";
 import { AddMotionModal } from "./AddMotionModal";
@@ -160,9 +160,8 @@ export function MotionTable({ readOnly = false }: { readOnly?: boolean }) {
             )}
             {!loading &&
               data?.motions.map((motion) => (
-                <>
+                <React.Fragment key={motion.id}>
                   <tr
-                    key={motion.id}
                     onClick={() =>
                       setExpandedId(expandedId === motion.id ? null : motion.id)
                     }
@@ -305,7 +304,7 @@ export function MotionTable({ readOnly = false }: { readOnly?: boolean }) {
                       </td>
                     </tr>
                   )}
-                </>
+                </React.Fragment>
               ))}
           </tbody>
         </table>
