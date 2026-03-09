@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { MotionFilters, Tier } from "./MotionFilters";
 import { ScrapeButton, ScrapeAllButton } from "./ScrapeButton";
+import { AddMotionModal } from "./AddMotionModal";
 
 interface Activity {
   id: string;
@@ -69,6 +70,7 @@ export function MotionTable() {
   const [data, setData] = useState<MotionsResponse | null>(null);
   const [loading, setLoading] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [showAddModal, setShowAddModal] = useState(false);
 
   const fetchMotions = useCallback(async () => {
     setLoading(true);
@@ -104,7 +106,15 @@ export function MotionTable() {
           onSearchChange={setSearch}
           onNeedsAttentionChange={setNeedsAttention}
         />
-        <ScrapeAllButton onDone={fetchMotions} />
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => setShowAddModal(true)}
+            className="px-4 py-2 rounded font-medium text-sm bg-green-600 text-white hover:bg-green-700"
+          >
+            + Add Motion
+          </button>
+          <ScrapeAllButton onDone={fetchMotions} />
+        </div>
       </div>
 
       {data && (
@@ -308,6 +318,13 @@ export function MotionTable() {
             Next
           </button>
         </div>
+      )}
+
+      {showAddModal && (
+        <AddMotionModal
+          onClose={() => setShowAddModal(false)}
+          onAdded={fetchMotions}
+        />
       )}
     </div>
   );

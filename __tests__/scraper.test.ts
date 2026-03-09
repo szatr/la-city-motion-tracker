@@ -208,7 +208,7 @@ describe("scrapeMotion", () => {
     await scrapeMotion("abc");
 
     expect(prisma.$transaction).toHaveBeenCalledOnce();
-    const txArgs = vi.mocked(prisma.$transaction).mock.calls[0][0] as unknown[];
+    const txArgs = vi.mocked(prisma.$transaction).mock.calls[0][0] as unknown as unknown[];
     // delete + 3 activity creates + 1 motion update = 5 operations
     expect(txArgs).toHaveLength(5);
   });
